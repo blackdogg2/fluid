@@ -1,516 +1,607 @@
-# Correct Fluid Mechanics Formula Sheet
+# Fluid Mechanics Formula Sheet - Correct Form
 
-Use this as the clean version of the formulas from the study guide.
+Based on the study guide formula list. Main corrections include proper notation for derivatives, vectors, integrals, pressure differences, power, and flow variables.
 
-## 1. Basic Definitions
+---
 
-Density:
+## 1. Reynolds Transport Theorem
 
-$$
-\rho = \frac{m}{V}
-$$
+\[
+\frac{dB_{sys}}{dt}
+=
+\frac{\partial}{\partial t}\int_{CV} \rho b \, dV
++
+\int_{CS} \rho b(\vec{V}_{rel}\cdot \vec{n})\, dA
+\]
 
-Specific volume:
+where:
 
-$$
-v = \frac{1}{\rho}
-$$
+- \(B\) = extensive property
+- \(b = B/m\) = intensive property
+- \(\rho\) = density
+- \(\vec{V}_{rel}\) = velocity relative to control surface
+- \(\vec{n}\) = outward unit normal vector
 
-Specific weight:
+---
 
-$$
-\gamma = \rho g
-$$
-
-Area of a circular pipe:
-
-$$
-A = \frac{\pi D^2}{4}
-$$
-
-Volume flow rate:
-
-$$
-\dot{V} = Q = V_{\text{avg}} A
-$$
+## 2. Continuity / Mass Conservation
 
 Mass flow rate:
 
-$$
-\dot{m} = \rho Q = \rho V_{\text{avg}} A
-$$
+\[
+\dot{m}=\rho Q=\rho A V_{avg}
+\]
 
-## 2. Conservation of Mass
+Volume flow rate:
+
+\[
+Q=A V_{avg}
+\]
 
 General control-volume mass balance:
 
-$$
-\frac{dm_{CV}}{dt} = \sum \dot{m}_{in} - \sum \dot{m}_{out}
-$$
+\[
+\frac{dm_{CV}}{dt}
+=
+\sum \dot{m}_{in}
+-
+\sum \dot{m}_{out}
+\]
 
 For steady flow:
 
-$$
-\sum \dot{m}_{in} = \sum \dot{m}_{out}
-$$
+\[
+\sum \dot{m}_{in}
+=
+\sum \dot{m}_{out}
+\]
 
 For steady incompressible flow:
 
-$$
-\sum Q_{in} = \sum Q_{out}
-$$
-
-For one inlet and one outlet, incompressible:
-
-$$
-A_1 V_1 = A_2 V_2
-$$
-
-## 3. Mechanical Energy
-
-Mechanical energy per unit mass:
-
-$$
-e_{mech} = \frac{P}{\rho} + \frac{V^2}{2} + gz
-$$
-
-Mechanical energy per unit weight, also called head:
-
-$$
-h_{mech} = \frac{P}{\rho g} + \frac{V^2}{2g} + z
-$$
-
-Pressure head:
-
-$$
-h_P = \frac{P}{\rho g}
-$$
-
-Velocity head:
-
-$$
-h_V = \frac{V^2}{2g}
-$$
-
-Elevation head:
-
-$$
-h_z = z
-$$
-
-## 4. Bernoulli Equation
-
-Bernoulli equation between points 1 and 2:
-
-$$
-\frac{P_1}{\rho g} + \frac{V_1^2}{2g} + z_1
+\[
+\sum Q_{in}
 =
-\frac{P_2}{\rho g} + \frac{V_2^2}{2g} + z_2
-$$
+\sum Q_{out}
+\]
 
-Pressure form:
+Single inlet and single outlet:
 
-$$
-P_1 + \frac{1}{2}\rho V_1^2 + \rho g z_1
-=
-P_2 + \frac{1}{2}\rho V_2^2 + \rho g z_2
-$$
+\[
+A_1V_1=A_2V_2
+\]
 
-Pitot-static tube:
+---
 
-$$
-V = \sqrt{\frac{2(P_0 - P)}{\rho}}
-$$
+## 3. Bernoulli Equation
 
-Torricelli equation for ideal tank discharge:
-
-$$
-V = \sqrt{2g\Delta z}
-$$
-
-## 5. Mechanical Energy Equation with Pump, Turbine, and Losses
-
-General steady incompressible mechanical energy equation:
-
-$$
+\[
 \frac{P_1}{\rho g}
-+ \alpha_1 \frac{V_1^2}{2g}
-+ z_1
-+ h_{pump}
++
+\frac{V_1^2}{2g}
++
+z_1
 =
 \frac{P_2}{\rho g}
-+ \alpha_2 \frac{V_2^2}{2g}
-+ z_2
-+ h_{turbine}
-+ h_L
-$$
++
+\frac{V_2^2}{2g}
++
+z_2
+\]
 
-If kinetic-energy correction factors are neglected:
+General form:
 
-$$
+\[
+\frac{P}{\rho g}
++
+\frac{V^2}{2g}
++
+z
+=
+\text{constant}
+\]
+
+Bernoulli applies when:
+
+- Flow is steady
+- Flow is incompressible
+- Friction is negligible
+- No pump or turbine exists between points
+- Points are along the same streamline
+
+---
+
+## 4. Mechanical Energy Equation
+
+\[
 \frac{P_1}{\rho g}
-+ \frac{V_1^2}{2g}
-+ z_1
-+ h_{pump}
++
+\alpha_1\frac{V_1^2}{2g}
++
+z_1
++
+h_p
 =
 \frac{P_2}{\rho g}
-+ \frac{V_2^2}{2g}
-+ z_2
-+ h_{turbine}
-+ h_L
-$$
++
+\alpha_2\frac{V_2^2}{2g}
++
+z_2
++
+h_t
++
+h_L
+\]
 
-Pump head added to fluid:
+where:
 
-$$
-h_{pump} =
-\frac{\dot{W}_{pump,fluid}}{\rho g Q}
-$$
+- \(h_p\) = pump head added
+- \(h_t\) = turbine head removed
+- \(h_L\) = total head loss
+- \(\alpha\) = kinetic energy correction factor
 
-Turbine head removed from fluid:
+---
 
-$$
-h_{turbine} =
-\frac{\dot{W}_{turbine,fluid}}{\rho g Q}
-$$
+## 5. Pump and Turbine Power
 
-Hydraulic power:
+Pump power added to fluid:
 
-$$
-\dot{W}_{fluid} = \rho g Q h
-$$
-
-Pump efficiency:
-
-$$
-\eta_{pump}
+\[
+\dot{W}_{pump,fluid}
 =
-\frac{\dot{W}_{pump,fluid}}{\dot{W}_{pump,input}}
-$$
+\rho g Q h_p
+\]
 
-Turbine efficiency:
+Pump input power:
 
-$$
-\eta_{turbine}
+\[
+\dot{W}_{input}
 =
-\frac{\dot{W}_{turbine,shaft}}{\dot{W}_{turbine,fluid}}
-$$
+\frac{\rho g Q h_p}{\eta_p}
+\]
 
-## 6. Linear Momentum Equation
+Turbine power removed from fluid:
 
-General steady linear momentum equation:
+\[
+\dot{W}_{turbine,fluid}
+=
+\rho g Q h_t
+\]
 
-$$
+Turbine shaft output:
+
+\[
+\dot{W}_{shaft}
+=
+\eta_t \rho g Q h_t
+\]
+
+---
+
+## 6. Pitot-Static Tube
+
+\[
+V
+=
+\sqrt{\frac{2(P_0-P)}{\rho}}
+\]
+
+where:
+
+- \(P_0\) = stagnation pressure
+- \(P\) = static pressure
+
+---
+
+## 7. Torricelli Equation
+
+\[
+V_{exit}
+=
+\sqrt{2g\Delta z}
+\]
+
+---
+
+## 8. Linear Momentum Equation
+
+Vector form:
+
+\[
 \sum \vec{F}
 =
-\sum_{out} \beta \dot{m}\vec{V}
+\sum_{out}\beta \dot{m}\vec{V}
 -
-\sum_{in} \beta \dot{m}\vec{V}
-$$
+\sum_{in}\beta \dot{m}\vec{V}
+\]
 
 x-direction:
 
-$$
+\[
 \sum F_x
 =
-\sum_{out} \beta \dot{m}V_x
+\sum_{out}\beta \dot{m}V_x
 -
-\sum_{in} \beta \dot{m}V_x
-$$
+\sum_{in}\beta \dot{m}V_x
+\]
 
 y-direction:
 
-$$
+\[
 \sum F_y
 =
-\sum_{out} \beta \dot{m}V_y
+\sum_{out}\beta \dot{m}V_y
 -
-\sum_{in} \beta \dot{m}V_y
-$$
+\sum_{in}\beta \dot{m}V_y
+\]
 
-Pressure force:
+where:
 
-$$
+- \(\beta\) = momentum correction factor
+- \(\dot{m}\vec{V}\) = momentum flow rate
+
+---
+
+## 9. Pressure Force
+
+\[
 F_P = PA
-$$
+\]
 
-Weight:
+Pressure acts into the control volume.
 
-$$
-W = mg = \rho V_{fluid} g
-$$
+---
 
-## 7. Angular Momentum Equation
+## 10. Angular Momentum Equation
 
-Steady angular momentum equation about a fixed axis:
-
-$$
+\[
 \sum M
 =
-\sum_{out} \dot{m} r V_\theta
+\sum_{out}\dot{m}rV_\theta
 -
-\sum_{in} \dot{m} r V_\theta
-$$
+\sum_{in}\dot{m}rV_\theta
+\]
 
 Shaft power:
 
-$$
-\dot{W}_{shaft} = \omega M
-$$
+\[
+\dot{W}_{shaft}
+=
+\omega M
+\]
 
 Turbomachinery form:
 
-$$
-\dot{W}_{shaft}
+\[
+\dot{W}
 =
 \dot{m}\omega
-\left(r_2 V_{\theta 2} - r_1 V_{\theta 1}\right)
-$$
+\left(
+r_2V_{\theta 2}
+-
+r_1V_{\theta 1}
+\right)
+\]
 
-## 8. Reynolds Number and Flow Classification
+---
 
-Pipe Reynolds number:
+## 11. Reynolds Number
 
-$$
-Re = \frac{\rho V_{avg} D}{\mu}
-$$
+General form:
 
-Using kinematic viscosity:
+\[
+Re
+=
+\frac{\rho V L}{\mu}
+=
+\frac{VL}{\nu}
+\]
 
-$$
-Re = \frac{V_{avg}D}{\nu}
-$$
+For pipe flow:
 
-Flow classification in circular pipes:
+\[
+Re
+=
+\frac{\rho V_{avg}D}{\mu}
+=
+\frac{V_{avg}D}{\nu}
+\]
 
-$$
-Re < 2300
-\quad \Rightarrow \quad
-\text{laminar}
-$$
+Pipe-flow classification:
 
-$$
-2300 \lesssim Re \lesssim 4000
-\quad \Rightarrow \quad
-\text{transitional}
-$$
+- Laminar: \(Re < 2300\)
+- Transitional: \(2300 \leq Re \leq 4000\)
+- Turbulent: \(Re > 4000\)
 
-$$
-Re > 4000
-\quad \Rightarrow \quad
-\text{turbulent}
-$$
+---
 
-## 9. Pipe Flow Losses
+## 12. Froude Number
 
-Darcy-Weisbach major head loss:
+\[
+Fr
+=
+\frac{V}{\sqrt{gL}}
+\]
 
-$$
-h_{L,major}
+---
+
+## 13. Mach Number
+
+\[
+Ma
+=
+\frac{V}{c}
+\]
+
+---
+
+## 14. Euler Number
+
+\[
+Eu
+=
+\frac{\Delta P}{\rho V^2}
+\]
+
+---
+
+## 15. Weber Number
+
+\[
+We
+=
+\frac{\rho V^2L}{\sigma}
+\]
+
+---
+
+## 16. Strouhal Number
+
+\[
+St
+=
+\frac{fL}{V}
+\]
+
+---
+
+## 17. Buckingham Pi Theorem
+
+\[
+\text{Number of } \Pi \text{ groups}
+=
+n-k
+\]
+
+where:
+
+- \(n\) = number of dimensional variables
+- \(k\) = number of independent primary dimensions
+
+---
+
+## 18. Darcy-Weisbach Head Loss
+
+\[
+h_L
 =
 f\frac{L}{D}\frac{V^2}{2g}
-$$
+\]
 
-Pressure drop from head loss:
+where:
 
-$$
-\Delta P = \rho g h_L
-$$
+- \(f\) = Darcy friction factor
+- \(L\) = pipe length
+- \(D\) = pipe diameter
+- \(V\) = average velocity
 
-Laminar Darcy friction factor:
+---
 
-$$
-f = \frac{64}{Re}
-$$
+## 19. Pressure Drop from Head Loss
 
-Minor head loss:
+\[
+\Delta P
+=
+\rho g h_L
+\]
 
-$$
+---
+
+## 20. Laminar Friction Factor
+
+\[
+f
+=
+\frac{64}{Re}
+\]
+
+This is only for laminar pipe flow.
+
+---
+
+## 21. Laminar Pipe Flow Pressure Drop
+
+\[
+\Delta P
+=
+\frac{32\mu L V_{avg}}{D^2}
+\]
+
+---
+
+## 22. Hagen-Poiseuille Equation
+
+Using diameter:
+
+\[
+Q
+=
+\frac{\pi D^4 \Delta P}{128\mu L}
+\]
+
+Using radius:
+
+\[
+Q
+=
+\frac{\pi R^4 \Delta P}{8\mu L}
+\]
+
+Since:
+
+\[
+D=2R
+\]
+
+both forms are equivalent.
+
+---
+
+## 23. Wall Shear Stress
+
+Using diameter:
+
+\[
+\tau_w
+=
+\frac{\Delta P D}{4L}
+\]
+
+Using radius:
+
+\[
+\tau_w
+=
+\frac{\Delta P R}{2L}
+\]
+
+---
+
+## 24. Haaland Equation
+
+\[
+\frac{1}{\sqrt{f}}
+=
+-1.8\log_{10}
+\left[
+\left(\frac{\varepsilon/D}{3.7}\right)^{1.11}
++
+\frac{6.9}{Re}
+\right]
+\]
+
+---
+
+## 25. Swamee-Jain Equation
+
+\[
+f
+=
+\frac{0.25}
+{
+\left[
+\log_{10}
+\left(
+\frac{\varepsilon}{3.7D}
++
+\frac{5.74}{Re^{0.9}}
+\right)
+\right]^2
+}
+\]
+
+---
+
+## 26. Minor Loss
+
+\[
 h_{L,minor}
 =
 K_L\frac{V^2}{2g}
-$$
+\]
 
 Total head loss:
 
-$$
-h_L
+\[
+h_{L,total}
 =
 \sum f\frac{L}{D}\frac{V^2}{2g}
 +
 \sum K_L\frac{V^2}{2g}
-$$
+\]
 
 Equivalent length:
 
-$$
+\[
 \frac{L_{eq}}{D}
 =
 \frac{K_L}{f}
-$$
+\]
 
-Hagen-Poiseuille equation:
+or
 
-$$
-Q
+\[
+L_{eq}
 =
-\frac{\pi D^4 \Delta P}{128\mu L}
-$$
+\frac{K_LD}{f}
+\]
 
-Alternative Hagen-Poiseuille equation using radius:
+---
 
-$$
-Q
-=
-\frac{\pi R^4 \Delta P}{8\mu L}
-$$
+## 27. Series Pipes
 
-Laminar pipe pressure drop:
+Same flow rate:
 
-$$
-\Delta P
-=
-\frac{32\mu L V_{avg}}{D^2}
-$$
+\[
+Q_1=Q_2=Q_3
+\]
 
-Wall shear stress in pipe flow:
+Total head loss:
 
-$$
-\tau_w
-=
-\frac{\Delta P D}{4L}
-$$
-
-## 10. Pipe Networks
-
-Pipes in series:
-
-$$
-Q_1 = Q_2 = Q_3 = \cdots
-$$
-
-$$
+\[
 h_{L,total}
 =
-h_{L,1} + h_{L,2} + h_{L,3} + \cdots
-$$
+h_{L1}
++
+h_{L2}
++
+h_{L3}
+\]
 
-Pipes in parallel:
+---
 
-$$
-h_{L,1} = h_{L,2} = h_{L,3} = \cdots
-$$
+## 28. Parallel Pipes
 
-$$
+Same head loss:
+
+\[
+h_{L1}=h_{L2}=h_{L3}
+\]
+
+Total flow rate:
+
+\[
 Q_{total}
 =
-Q_1 + Q_2 + Q_3 + \cdots
-$$
+Q_1+Q_2+Q_3
+\]
 
-## 11. Flow Meters
+---
 
-Ideal Venturi/orifice idea:
+## 29. Differential Continuity Equation
 
-$$
-Q_{actual} = C_d Q_{ideal}
-$$
+Compressible flow:
 
-Discharge coefficient:
-
-$$
-C_d = \frac{Q_{actual}}{Q_{ideal}}
-$$
-
-For a horizontal ideal Venturi meter:
-
-$$
-Q_{ideal}
-=
-A_2
-\sqrt{
-\frac{2(P_1-P_2)}
-{\rho\left[1-\left(A_2/A_1\right)^2\right]}
-}
-$$
-
-With discharge coefficient:
-
-$$
-Q_{actual}
-=
-C_d A_2
-\sqrt{
-\frac{2(P_1-P_2)}
-{\rho\left[1-\left(A_2/A_1\right)^2\right]}
-}
-$$
-
-## 12. Dimensional Analysis
-
-Number of dimensionless groups:
-
-$$
-\text{number of } \Pi \text{ groups} = n - k
-$$
-
-where:
-
-- \(n\) = number of variables.
-- \(k\) = number of independent primary dimensions.
-
-Common dimensionless numbers:
-
-Reynolds number:
-
-$$
-Re = \frac{\rho V L}{\mu}
-$$
-
-Froude number:
-
-$$
-Fr = \frac{V}{\sqrt{gL}}
-$$
-
-Mach number:
-
-$$
-Ma = \frac{V}{c}
-$$
-
-Euler number:
-
-$$
-Eu = \frac{\Delta P}{\rho V^2}
-$$
-
-Weber number:
-
-$$
-We = \frac{\rho V^2 L}{\sigma}
-$$
-
-Strouhal number:
-
-$$
-St = \frac{fL}{V}
-$$
-
-## 13. Differential Continuity
-
-General continuity equation:
-
-$$
+\[
 \frac{\partial \rho}{\partial t}
 +
 \nabla \cdot (\rho \vec{V})
 =
 0
-$$
+\]
 
 Cartesian form:
 
-$$
+\[
 \frac{\partial \rho}{\partial t}
 +
 \frac{\partial(\rho u)}{\partial x}
@@ -520,17 +611,17 @@ $$
 \frac{\partial(\rho w)}{\partial z}
 =
 0
-$$
+\]
 
-Incompressible continuity:
+Incompressible flow:
 
-$$
-\nabla \cdot \vec{V} = 0
-$$
+\[
+\nabla \cdot \vec{V}=0
+\]
 
 Cartesian incompressible form:
 
-$$
+\[
 \frac{\partial u}{\partial x}
 +
 \frac{\partial v}{\partial y}
@@ -538,169 +629,214 @@ $$
 \frac{\partial w}{\partial z}
 =
 0
-$$
+\]
 
-Two-dimensional incompressible form:
+2D incompressible flow:
 
-$$
+\[
 \frac{\partial u}{\partial x}
 +
 \frac{\partial v}{\partial y}
 =
 0
-$$
+\]
 
-## 14. Material Derivative and Acceleration
+---
 
-Material derivative:
+## 30. Material Derivative
 
-$$
-\frac{D}{Dt}
+\[
+\frac{D\vec{V}}{Dt}
 =
-\frac{\partial}{\partial t}
+\frac{\partial \vec{V}}{\partial t}
 +
-u\frac{\partial}{\partial x}
-+
-v\frac{\partial}{\partial y}
-+
-w\frac{\partial}{\partial z}
-$$
+(\vec{V}\cdot \nabla)\vec{V}
+\]
 
-x-acceleration:
+x-direction acceleration:
 
-$$
+\[
 a_x
 =
-\frac{Du}{Dt}
-=
 \frac{\partial u}{\partial t}
-+ u\frac{\partial u}{\partial x}
-+ v\frac{\partial u}{\partial y}
-+ w\frac{\partial u}{\partial z}
-$$
++
+u\frac{\partial u}{\partial x}
++
+v\frac{\partial u}{\partial y}
++
+w\frac{\partial u}{\partial z}
+\]
 
-y-acceleration:
+where:
 
-$$
-a_y
+- \(u\) = x-direction velocity component
+- \(v\) = y-direction velocity component
+- \(w\) = z-direction velocity component
+
+Important:
+
+Do not confuse velocity component \(u\) with kinematic viscosity \(\nu\).
+
+---
+
+## 31. Stream Function
+
+For 2D incompressible Cartesian flow:
+
+\[
+u
 =
-\frac{Dv}{Dt}
+\frac{\partial \psi}{\partial y}
+\]
+
+\[
+v
 =
-\frac{\partial v}{\partial t}
-+ u\frac{\partial v}{\partial x}
-+ v\frac{\partial v}{\partial y}
-+ w\frac{\partial v}{\partial z}
-$$
-
-z-acceleration:
-
-$$
-a_z
-=
-\frac{Dw}{Dt}
-=
-\frac{\partial w}{\partial t}
-+ u\frac{\partial w}{\partial x}
-+ v\frac{\partial w}{\partial y}
-+ w\frac{\partial w}{\partial z}
-$$
-
-## 15. Stream Function
-
-For two-dimensional incompressible Cartesian flow:
-
-$$
-u = \frac{\partial \psi}{\partial y}
-$$
-
-$$
-v = -\frac{\partial \psi}{\partial x}
-$$
+-\frac{\partial \psi}{\partial x}
+\]
 
 Flow rate per unit width between two streamlines:
 
-$$
-q = \psi_2 - \psi_1
-$$
+\[
+q
+=
+\psi_2-\psi_1
+\]
 
-## 16. Navier-Stokes Equation
+---
 
-Incompressible Newtonian flow with constant viscosity:
+## 32. Navier-Stokes Equation
 
-$$
+For incompressible Newtonian constant-property flow:
+
+\[
 \rho \frac{D\vec{V}}{Dt}
 =
 -\nabla P
-+ \rho \vec{g}
-+ \mu \nabla^2 \vec{V}
-$$
++
+\rho \vec{g}
++
+\mu \nabla^2 \vec{V}
+\]
 
-Without gravity:
+Term meanings:
 
-$$
-\rho \frac{D\vec{V}}{Dt}
+- \(\rho \frac{D\vec{V}}{Dt}\) = inertia term
+- \(-\nabla P\) = pressure force term
+- \(\rho \vec{g}\) = body force term
+- \(\mu \nabla^2 \vec{V}\) = viscous term
+
+---
+
+## 33. Couette Flow
+
+Velocity profile:
+
+\[
+u(y)
 =
--\nabla P
-+ \mu \nabla^2 \vec{V}
-$$
+\frac{Uy}{h}
+\]
 
-## 17. Couette and Poiseuille Flow
+Shear stress:
 
-Couette flow between two plates, bottom stationary and top moving at speed \(U\):
-
-$$
-u(y) = \frac{U}{h}y
-$$
-
-Couette shear stress:
-
-$$
-\tau = \mu \frac{du}{dy}
+\[
+\tau
 =
-\mu \frac{U}{h}
-$$
+\mu \frac{du}{dy}
+=
+\frac{\mu U}{h}
+\]
 
-Laminar pipe Poiseuille velocity profile:
+---
 
-$$
+## 34. Plane Poiseuille Flow
+
+Pressure-driven flow between two stationary parallel plates.
+
+The velocity profile is parabolic.
+
+Key points:
+
+- No slip at both walls
+- Maximum velocity occurs at the centerline
+- Pressure decreases in the flow direction
+
+---
+
+## 35. Pipe Poiseuille Flow
+
+Velocity profile:
+
+\[
 u(r)
 =
 \frac{R^2}{4\mu}
-\left(-\frac{dP}{dx}\right)
-\left(1-\frac{r^2}{R^2}\right)
-$$
+\left(
+-\frac{dP}{dx}
+\right)
+\left[
+1-\left(\frac{r}{R}\right)^2
+\right]
+\]
 
 Maximum velocity:
 
-$$
+\[
 u_{max}
 =
 \frac{R^2}{4\mu}
-\left(-\frac{dP}{dx}\right)
-$$
+\left(
+-\frac{dP}{dx}
+\right)
+\]
 
 Average velocity:
 
-$$
+\[
 V_{avg}
 =
 \frac{u_{max}}{2}
-$$
+\]
 
 Flow rate:
 
-$$
+\[
 Q
 =
 \frac{\pi R^4}{8\mu}
-\left(-\frac{dP}{dx}\right)
-$$
+\left(
+-\frac{dP}{dx}
+\right)
+\]
 
-Using pressure drop over length \(L\):
+Pressure-drop form:
 
-$$
+\[
 Q
 =
-\frac{\pi R^4 \Delta P}{8\mu L}
-$$
+\frac{\pi R^4\Delta P}{8\mu L}
+\]
 
+This is equivalent to:
+
+\[
+Q
+=
+\frac{\pi D^4\Delta P}{128\mu L}
+\]
+
+---
+
+# Common Formula Mistakes to Avoid
+
+1. Do not use Bernoulli across a pump, turbine, or high-loss region.
+2. Do not mix gage pressure and absolute pressure in the same equation.
+3. Do not use \(f=64/Re\) for turbulent flow.
+4. Do not confuse Darcy friction factor with Fanning friction factor.
+5. Do not assume equal flow rate in parallel pipes.
+6. Do not assume equal head loss in series pipes.
+7. Do not forget minor losses from valves, elbows, entrances, and exits.
+8. Do not use diameter when the formula requires radius.
+9. Do not confuse \(u\), the velocity component, with \(\nu\), kinematic viscosity.
+10. Always check units before final answer.
